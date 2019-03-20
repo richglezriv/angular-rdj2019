@@ -1,0 +1,57 @@
+<main role="main" class="col-md-12 ml-sm-auto col-lg-12 pt-5">
+	<div class="row pt-3 pb-2">
+		<div class="col-md-4">
+			<h3>Cuentas de Usuario</h3>
+      <table class="table">
+        <thead>
+					<tr>
+						<th scope="col">Usuario</th>
+						<th scope="col">Activo</th>
+						<th scope="col">Rol</th>
+						<th scope="col">&nbsp;</th>
+					</tr>
+				</thead>
+        <tbody>
+          <tr>
+            <td>admin</td>
+            <td><input class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled></td>
+            <td>Admin</td>
+            <td>
+              <button class="btn btn-secondary btn-sm"><i class="far fa-edit"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+		</div>
+    <div class="col-md-1">&nbsp;</div>
+    <div class="col-md-4">
+      <div class="form-group">
+                <label>Nombre de usuario</label>
+                <input type="text" id="login" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label>Contraseña</label>
+                <input type="password" class="form-control" id="password"/>
+            </div>
+            <div class="form-group">
+                <label>Rol</label>
+                <select class="form-control" id="rolSelect">
+                    <option value="4">Operativo</option>
+                    <option value="1">Administrador</option>
+                    <option value="6">Auditor</option>
+                    <option value="5">Invitado</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+  <label class="form-check-label" for="inlineCheckbox1">Activo</label>
+</div>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-primary"><i class="far fa-save"></i>&nbsp;Registrar</button>&nbsp;
+                
+            </div>
+    </div>
+	</div>
+</main>

@@ -1,0 +1,92 @@
+<ng-container *ngIf="(profileService.selectedProfile$ | async) as profile ">
+	<div class="row">
+		<div class="col-md-12">
+			<h5>{{profile.name}} {{profile.lastName}}</h5>
+			<h5>{{ profile.streetName }} Manzana {{profile.apple}} Lote {{profile.lot}} No. {{profile.exteriorNo}}</h5>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-6">
+			<h4>Estatus</h4>
+
+
+			<div class="form-group" *ngIf="profile.lastPayment">
+				<ul class="list-group">
+					<li class="list-group-item list-group-item-info">
+						<span class="badge">{{profile.lastPayment.paymentDate}}</span>
+                    <strong>Último Pago</strong>
+                </li>
+                <li class="list-group-item">
+                  Tipo
+                    <span class="badge">{{profile.lastPayment.paymentType}}</span>
+                    
+                </li>
+                <li class="list-group-item">
+                    Periodo
+                    <span class="badge">{{profile.lastPayment.year}}</span>
+                </li>
+                <li class="list-group-item" *ngIf="profile.lastPayment.period">
+                    {{profile.lastPayment.period}}
+                </li>
+                <li class="list-group-item" *ngIf="profile.lastPayment.reference">
+                    {{profile.lastPayment.reference}}
+                </li>
+            </ul>
+        </div>
+    
+        <div class="form-group" *ngIf="profile.lastPayment">
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-info">
+                    <strong>Situación actual</strong>
+                </li>
+                <li class="list-group-item list-group-item-danger">
+                    {{profile.lastPayment.currentStatus}}
+                </li>
+            </ul>
+        </div>
+        <div class="form-group">
+          <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#notesModal"><i class="fas fa-wallet"></i> Realizar Pago</button>
+        </div>
+    </div>
+
+
+<div class="col-md-6">
+            <h4>Observaciones</h4>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group"> 
+                  <textarea class="form-control" cols="20" id="Notes" name="Notes" rows="3"></textarea>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <button type="button" id="registerNote" class="btn btn-info" onclick="profileView.registerNote();" title="Agregar Comentario"><i class="far fa-sticky-note"></i> Registrar</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">&nbsp;</div>
+
+            <div class="row">
+
+            <table class="table table-condensed" *ngIf="profile.notes">
+                <tbody id="tbNotes">
+                        <tr *ngFor="let note of profile.notes">
+                            <td>[{{note.creationDate}}] {{note.note}}</td>
+                            <td>
+                                <button type="button" class="btn btn-danger btn-sm" (click)="deleteNote(note.id);"><i class="far fa-trash-alt"></i></button>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+
+            </div>
+    </div>
+    
+
+
+        </div>
+</ng-container>
+
+<profile-payment></profile-payment>

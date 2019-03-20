@@ -1,0 +1,128 @@
+<form [formGroup]="profileForm">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-group">
+				<label for="Name">Nombre</label>
+        <input class="form-control" formControlName="name" />
+      </div>
+    </div>
+    <div class="col-md-6">
+			<div class="form-group">
+				<label for="Name">Apellidos</label>
+        <input class="form-control" formControlName="lastName" />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-md-6">
+          <div class="form-group">
+              <label for="Phone">Telefono</label>
+              <input class="form-control" formControlName="phone" />
+          </div>
+      </div>
+      <div class="col-md-6">
+          <div class="form-group">
+              <label for="Mobile">Movil</label>
+              <input class="form-control" formControlName="mobile" />
+          </div>
+      </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+          <label for="Email">Correo electr&#243;nico</label>
+          <input type="text" class="form-control" formControlName="email" />
+      </div>
+    </div>
+  </div>
+</form>
+
+        
+        
+<div class="row">
+  <div class="col-md-6">
+     <div class="form-group">
+            <label for="StreetId">Calle</label>
+            <select class="form-control" data-val="true" data-val-number="The field StreetId must be a number." data-val-required="The StreetId field is required." id="StreetId" name="StreetId"><option selected="selected" value="1">1era Privada de Cascada de Agua Azul</option>
+<option value="2">2da Privada de Cascada de Agua Azul</option>
+<option value="3">Cascada de Agua Azul</option>
+<option value="4">Cascada de Baseaseachic
+</option>
+<option value="5">Paseo del Cantil
+</option>
+<option value="6">Cascada de Chuveje</option>
+<option value="7">Salto de Eyipantla</option>
+<option value="8">Cascada de las Flores</option>
+<option value="9">Cascada las Glorias</option>
+<option value="10">Salto de Juanacatlan</option>
+<option value="11">Cascada de Misol-Ha</option>
+<option value="12">Cascada de Naolinco</option>
+<option value="13">Prolongacion Naolinco</option>
+<option value="14">Cascada de las Palmas</option>
+<option value="15">Boulevard el Salto</option>
+<option value="16">El Saltito</option>
+<option value="17">Cascada de Tamul</option>
+<option value="18">Salto de Tzararacua</option>
+<option value="19">Libramiento Sur Poniente</option>
+<option value="1000">Todos</option>
+</select>
+        </div>
+  </div>
+  <div class="col-md-6">
+        <div class="form-group">
+            <label for="LocationTypeId">Tipo</label>
+            <select class="form-control" data-val="true" data-val-number="The field LocationTypeId must be a number." data-val-required="The LocationTypeId field is required." id="LocationTypeId" name="LocationTypeId"><option value="1">Terreno</option>
+<option selected="selected" value="2">Casa Habitacion</option>
+<option value="3">Macro Lote</option>
+<option value="4">Macro Lote (Ventus)</option>
+<option value="5">Condominio Vertical</option>
+<option value="6">Casa en condominio</option>
+<option value="7">Condominio residencial</option>
+<option value="8">Edificio</option>
+</select>
+        </div>
+  </div>
+
+</div>
+
+<div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="Apple">Manzana</label>
+                    <input class="form-control short-number" 
+                      data-val="true" 
+                      data-val-number="The field Apple must be a number." 
+                      data-val-required="The Apple field is required." 
+                      id="Apple" 
+                      maxLength="3" 
+                      name="Apple" 
+                      type="text" 
+                      value="68" />
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="Lot">Lote</label>
+                    <input class="form-control short-number" id="Lot" maxLength="3" name="Lot" type="text" value="73" />
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="Number">No. Ext</label>
+                    <input class="form-control short-number" id="Number" maxLength="8" name="Number" type="text" value="101" />
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="Interior">No. Int</label>
+                    <input class="form-control short-number" id="Interior" maxLength="8" name="Interior" type="text" value="" />
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <button class="btn btn-primary"><i class="far fa-save"></i> Save</button>&nbsp;
+            <button class="btn btn-danger"><i class="far fa-trash-alt"></i> Delete</button>
+          </div>
+        </div>

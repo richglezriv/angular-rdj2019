@@ -1,0 +1,99 @@
+<main role="main" class="col-md-12 ml-sm-auto col-lg-12 pt-5">
+  <!-- <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h3 class="h3">Movimientos</h3>
+  </div> -->
+  <div class="row pt-3 pb-2">
+    <div class="col-md-3"> 
+      <div class="form-group">
+            <label for="MovementDate">Fecha de Movimiento</label>
+            <input class="form-control" data-val="true" data-val-date="The field MovementDate must be a date." data-val-required="The MovementDate field is required." id="MovementDate" name="MovementDate" type="text" value="07/01/2019" />
+        </div>
+        <div class="form-group">
+            <label for="PaymentType">Tipo de Movimiento</label>
+            <select class="form-control" data-val="true" data-val-number="The field PaymentType must be a number." data-val-required="The PaymentType field is required." id="PaymentType" name="PaymentType"><option value="42">Admon, Equipo de Seguridad y Vigilancia</option>
+<option value="2089">Autom&#243;vil ATOS</option>
+<option value="13">Caja Chica</option>
+<option value="16">Comisiones Bancarias</option>
+<option value="3090">Cuatrimoto Italika ATV</option>
+<option value="3089">Cuatrimoto Seguridad. Gas. y Mto.</option>
+<option value="17">Cuotas Asociacion RDJ</option>
+<option value="4">Desazolve</option>
+<option value="35">Equipo Seguridad y Vigilancia</option>
+<option value="15">Finiquitos</option>
+<option value="2090">Gasolina y mantenimiento Autom&#243;vil ATOS</option>
+<option value="12">Gastos Acondicionamiento Ofna</option>
+<option value="1042">Gastos Administrativos</option>
+<option value="30">Gastos M&#233;dicos Personal Oficina</option>
+<option value="1041">Gastos Operativos</option>
+<option value="14">Honorarios Administrativos</option>
+<option value="20">Honorarios Contador</option>
+<option value="19">Honorarios Notariales</option>
+<option value="7">Jardineria</option>
+<option value="40">Limpieza Coladeras</option>
+<option value="27">M.O. Pintura Glorietas y Camellones</option>
+<option value="6">Mantto Plumas</option>
+<option value="31">Mobiliario y Equipo de Oficina</option>
+<option value="34">Mtto Equipo de Oficina</option>
+<option value="32">Mtto. Equipo de Seguridad</option>
+<option value="18">Multas Asociacion</option>
+<option value="22">Otros</option>
+<option value="24">Otros Ingresos</option>
+<option value="26">Pintura Glorietas y Camellones</option>
+<option value="3">Pipas de Agua</option>
+<option value="3088">Plumas Caseta 1 y 2 </option>
+<option value="21">Rentas</option>
+<option value="41">Reparacion Casetas</option>
+<option value="39">Reparaci&#243;n Oficina</option>
+<option value="11">Reparacion Plumas</option>
+<option value="37">Telefonos Administracion</option>
+<option value="36">Telefonos Vigilancia</option>
+<option value="29">Uniformes Personal Oficina</option>
+<option value="33">Varios Jardiner&#237;a</option>
+<option value="28">Vigilancia</option>
+</select>
+        </div>
+        <div class="form-group">
+
+            <label for="PaymentMethod">Medio de Pago</label>
+            <select class="form-control" data-val="true" data-val-number="The field PaymentMode must be a number." data-val-required="The PaymentMode field is required." id="PaymentMode" name="PaymentMode"><option value="3">Transferencia</option>
+<option value="4">Cheque</option>
+<option value="5">Pago Domiciliado</option>
+</select>
+        </div>
+            <div class="form-group">
+                <label for="Amount">Monto</label>
+                <div class="input-group">
+                    <span class="input-group-addon">$</span>
+                    <input class="form-control" data-val="true" data-val-number="The field Amount must be a number." data-val-required="The Amount field is required." id="Amount" name="Amount" pattern="[0-9]+([\.,][0-9]+)?" placeholder="0.00" step="0.01" type="number" value="0" />
+                </div>
+
+            </div>
+                <div class="form-group">
+                    <label for="Notes">Observaciones</label>
+                    <textarea class="form-control" cols="20" id="Notes" name="Notes" rows="3">
+</textarea>
+
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Registrar</button>
+                </div>
+    </div>
+
+    <div class="col-md-9">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>&nbsp;</th>
+                    <th>Fecha</th>
+                    <th>Concepto</th>
+                    <th>Egreso</th>
+                    <th>Ingreso</th>
+                </tr>
+            </thead>
+            <tbody id="payments">
+
+            </tbody>
+        </table>
+    </div>
+  </div>
+</main>
