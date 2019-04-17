@@ -10,6 +10,12 @@
     "@angular/platform-browser": "^7.0.1",
     "@angular/platform-browser-dynamic": "^7.0.1",
     "@angular/router": "^7.0.1",
+    "@syncfusion/ej2-angular-base": "^17.1.39",
+    "@syncfusion/ej2-angular-buttons": "^17.1.40",
+    "@syncfusion/ej2-angular-dropdowns": "^17.1.41",
+    "@syncfusion/ej2-angular-grids": "^17.1.41",
+    "@syncfusion/ej2-buttons": "^17.1.40",
+    "@syncfusion/ej2-data": "^17.1.41",
     "core-js": "^2.5.7",
     "rxjs": "^6.3.3",
     "zone.js": "^0.8.26"

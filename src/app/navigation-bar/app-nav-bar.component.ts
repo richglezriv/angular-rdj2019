@@ -16,15 +16,20 @@ export class AppNavBarComponent implements OnInit {
 
   ngOnInit(): void {
     // console.log(this.route);
-    this.router.events.subscribe(event => {
-      if(event instanceof NavigationEnd){
-        this.route.firstChild.data.subscribe(c => console.log(c));
+    this.router.events
+      .pipe(filter(e => e instanceof NavigationEnd))
+      .subscribe(event => {
+        if (!this.route.firstChild) {
+          return;
+        }
+        this.route.firstChild.data
+          .pipe(filter(d => !!d))
+          .subscribe(c => console.log(c));
         this.breadCrumb = this.route.firstChild.data;
-      }
-    });
+      });
     if (this.route.firstChild) {
       this.route.firstChild.data
-        .pipe(filter(d => d != null))
+        .pipe(filter(d => !!d))
         .subscribe(d => console.log(d));
 
     }
