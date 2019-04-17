@@ -17,6 +17,8 @@ import { AppProfileRoutingModule } from "./profile/app-profile.routing.module";
 import { AppMovementRoutingModule } from "./movements/app-movement.routing.module";
 import { AppAdminRoutingModule } from "./admin/app-admin.routing.module";
 
+import { ComboBoxModule } from '@syncfusion/ej2-angular-dropdowns';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -28,7 +30,8 @@ import { AppAdminRoutingModule } from "./admin/app-admin.routing.module";
     ]),
     AppProfileRoutingModule,
     AppMovementRoutingModule,
-    AppAdminRoutingModule
+    AppAdminRoutingModule,
+    ComboBoxModule
   ],
   declarations: [
     AppComponent,
