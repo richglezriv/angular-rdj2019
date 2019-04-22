@@ -16,6 +16,7 @@
     "@syncfusion/ej2-angular-grids": "^17.1.41",
     "@syncfusion/ej2-buttons": "^17.1.40",
     "@syncfusion/ej2-data": "^17.1.41",
+    "@syncfusion/ej2-layouts": "^17.1.40",
     "core-js": "^2.5.7",
     "rxjs": "^6.3.3",
     "zone.js": "^0.8.26"

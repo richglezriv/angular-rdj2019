@@ -6,33 +6,45 @@
 		</div>
 	</div>
 
+<div class="row">
+  <div class="col-md-6">
+    <div class = "e-card">
+        <div class="e-card-header">
+            <div class="e-card-header-caption">
+                <div class="e-card-header-title">Estatus</div>
+            </div>
+        </div>                    
+        <div class="e-card-content">
+          <ul class="list-group">
+            <li>
+              Ultimo Pago <span class="badge">{{profile.lastPayment.paymentDate}}</span>
+            </li>
+            <li >
+              Tipo <span class="badge">{{profile.lastPayment.paymentType}}</span>
+            </li>
+            <li >
+              Periodo <span class="badge">{{profile.lastPayment.year}}</span>
+            </li>
+            <li *ngIf="profile.lastPayment.period">
+              {{profile.lastPayment.period}}
+            </li>
+            <li *ngIf="profile.lastPayment.reference">
+              {{profile.lastPayment.reference}}
+            </li>
+          </ul>
+        </div>         
+        
+    </div>
+  </div>
+</div>
+
 	<div class="row">
 		<div class="col-md-6">
 			<h4>Estatus</h4>
 
 
 			<div class="form-group" *ngIf="profile.lastPayment">
-				<ul class="list-group">
-					<li class="list-group-item list-group-item-info">
-						<span class="badge">{{profile.lastPayment.paymentDate}}</span>
-                    <strong>Último Pago</strong>
-                </li>
-                <li class="list-group-item">
-                  Tipo
-                    <span class="badge">{{profile.lastPayment.paymentType}}</span>
-                    
-                </li>
-                <li class="list-group-item">
-                    Periodo
-                    <span class="badge">{{profile.lastPayment.year}}</span>
-                </li>
-                <li class="list-group-item" *ngIf="profile.lastPayment.period">
-                    {{profile.lastPayment.period}}
-                </li>
-                <li class="list-group-item" *ngIf="profile.lastPayment.reference">
-                    {{profile.lastPayment.reference}}
-                </li>
-            </ul>
+				
         </div>
     
         <div class="form-group" *ngIf="profile.lastPayment">

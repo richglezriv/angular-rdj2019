@@ -5,6 +5,7 @@
 				<ul class="nav flex-column">
 					<li class="nav-item">
             <ejs-combobox 
+              placeHolder="Select a street"
               [dataSource]="streets$ | async" 
               [fields]="dropDownFields" 
               (change)="streetSelected($event)">
