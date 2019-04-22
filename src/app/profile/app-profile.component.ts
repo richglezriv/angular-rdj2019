@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
-import { Observable, of, from, throwError } from "rxjs";
-import { map, catchError, filter } from "rxjs/operators";
+import { Observable, of, from, throwError, Subject } from "rxjs";
+import { map, catchError, takeUntil, filter } from "rxjs/operators";
 
 import { DataServiceFactory, DataService } from "../core";
 import { ProfileModel } from "./profile-model";
@@ -25,6 +25,7 @@ export class AppProfileComponent implements OnInit {
     private route: ActivatedRoute) {
   }
 
+  dropDownFields: Object = { text: 'name', value: 'id' };
   selectedProfile$: Observable<ProfileModel>;
   profiles$: Observable<ProfileModel[]>;
   streets$: Observable<Street[]>;
@@ -38,17 +39,17 @@ export class AppProfileComponent implements OnInit {
     { name: 'Rich', age: 39 }]);
     //filter out people with age under 30
     source.pipe(filter(person => person.age >= 30)).subscribe(s => console.log(s));
-    let dataSource:any;
+    let dataSource: any;
     // await this.factory.create('Streets')
     //   .getSomething<Street>()
     //   .pipe(
     //     filter(s => {console.log(s); return s.id === 17;})
     //   )
     //   .subscribe(s =>console.log('es'+s));
-      // .subscribe(s =>
-      //   dataSource = s.filter(s => s.name === "El Saltito")
-      //     .map(s => ({ text: s.name, value: s.name }))
-      // );
+    // .subscribe(s =>
+    //   dataSource = s.filter(s => s.name === "El Saltito")
+    //     .map(s => ({ text: s.name, value: s.name }))
+    // );
 
     this.selectedProfile$ = this.profileService.selectedProfile$;
     //  this.test({p1:'222', p2: '333'});
@@ -65,7 +66,7 @@ export class AppProfileComponent implements OnInit {
         this.router.navigate(['./overview'], { relativeTo: this.route }));
   }
 
-  streetSelected(value: string) {
-    this.profiles$ = this.factory.create('ProfilesSearch').getEntities<ProfileModel>({ streetId: value });
+  streetSelected(args){
+    this.profiles$ = this.factory.create('ProfilesSearch').getEntities<ProfileModel>({ streetId: args.itemData.id });
   }
 }

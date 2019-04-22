@@ -4,11 +4,11 @@
 			<div class="sidebar-sticky">
 				<ul class="nav flex-column">
 					<li class="nav-item">
-						<select #streetDropDown class="form-control" (change)="streetSelected(streetDropDown.value)">
-              <option value="-1">-- Seleccione --</option>
-              <option *ngFor="let street of streets$ | async" 
-              value="{{street.id}}">{{street.name}}</option>  
-            </select>
+            <ejs-combobox 
+              [dataSource]="streets$ | async" 
+              [fields]="dropDownFields" 
+              (change)="streetSelected($event)">
+            </ejs-combobox>
           </li>
           <li class="nav-item" *ngFor="let profile of profiles$ | async">
             <a class="nav-link" (click)="navigate(profile)">
