@@ -1,71 +1,74 @@
 <ng-container *ngIf="(profileService.selectedProfile$ | async) as profile ">
-	<div class="row">
+	<div class="row mt-1">
 		<div class="col-md-12">
-			<h5>{{profile.name}} {{profile.lastName}}</h5>
-			<h5>{{ profile.streetName }} Manzana {{profile.apple}} Lote {{profile.lot}} No. {{profile.exteriorNo}}</h5>
+			<div class="e-card">
+				<div class="e-card-header">
+					<div class="e-card-header-caption">
+						<div class="e-card-header-title">{{profile.name}} {{profile.lastName}}</div>
+					</div>
+				</div>
+				<div class="e-card-content">
+					{{ profile.streetName }} Manzana {{profile.apple}} Lote {{profile.lot}} No. {{profile.exteriorNo}}
+				</div>
+			</div>
+
 		</div>
 	</div>
 
-<div class="row">
-  <div class="col-md-6">
-    <div class = "e-card">
-        <div class="e-card-header">
-            <div class="e-card-header-caption">
-                <div class="e-card-header-title">Estatus</div>
-            </div>
-        </div>                    
-        <div class="e-card-content">
-          <ul class="list-group">
-            <li>
-              Ultimo Pago <span class="badge">{{profile.lastPayment.paymentDate}}</span>
+	<div class="row mt-2">
+		<div class="col-md-6">
+			<div class="e-card">
+				<div class="e-card-header">
+					<div class="e-card-header-caption">
+						<div class="e-card-header-title">Estatus</div>
+					</div>
+				</div>
+				<div class="e-card-content">
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item">
+							Ultimo Pago <span class="badge">{{profile.lastPayment.paymentDate}}</span>
             </li>
-            <li >
+            <li class="list-group-item">
               Tipo <span class="badge">{{profile.lastPayment.paymentType}}</span>
             </li>
-            <li >
+            <li class="list-group-item">
               Periodo <span class="badge">{{profile.lastPayment.year}}</span>
             </li>
-            <li *ngIf="profile.lastPayment.period">
+            <li class="list-group-item" *ngIf="profile.lastPayment.period">
               {{profile.lastPayment.period}}
             </li>
-            <li *ngIf="profile.lastPayment.reference">
+            <li class="list-group-item" *ngIf="profile.lastPayment.reference">
               {{profile.lastPayment.reference}}
             </li>
+            <li class="list-group-item list-group-item-info">
+                <strong>Situación actual</strong>
+            </li>
+            <li class="list-group-item list-group-item-danger">
+                {{profile.lastPayment.currentStatus}}
+            </li>
           </ul>
+          <div class="form-group mt-">
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#notesModal"><i class="fas fa-wallet"></i> Realizar Pago</button>
+          </div>
         </div>         
         
     </div>
+  
+  
+  
+  
+  
+  
   </div>
-</div>
 
-	<div class="row">
-		<div class="col-md-6">
-			<h4>Estatus</h4>
-
-
-			<div class="form-group" *ngIf="profile.lastPayment">
-				
-        </div>
-    
-        <div class="form-group" *ngIf="profile.lastPayment">
-            <ul class="list-group">
-                <li class="list-group-item list-group-item-info">
-                    <strong>Situación actual</strong>
-                </li>
-                <li class="list-group-item list-group-item-danger">
-                    {{profile.lastPayment.currentStatus}}
-                </li>
-            </ul>
-        </div>
-        <div class="form-group">
-          <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#notesModal"><i class="fas fa-wallet"></i> Realizar Pago</button>
-        </div>
-    </div>
-
-
-<div class="col-md-6">
-            <h4>Observaciones</h4>
-            <div class="row">
+  <div class="col-md-6">
+    <div class="e-card">
+      <div class="e-card-header">
+					<div class="e-card-header-caption">
+						<div class="e-card-header-title">Observaciones</div>
+					</div>
+				</div>
+				<div class="e-card-content">
               <div class="col-md-12">
                 <div class="form-group"> 
                   <textarea class="form-control" cols="20" id="Notes" name="Notes" rows="3"></textarea>
@@ -76,11 +79,24 @@
                   <button type="button" id="registerNote" class="btn btn-info" onclick="profileView.registerNote();" title="Agregar Comentario"><i class="far fa-sticky-note"></i> Registrar</button>
                 </div>
               </div>
-            </div>
+        </div>
+    </div>
+    </div>
+</div>
 
-            <div class="row">&nbsp;</div>
+	<div class="row mt-2">
+		<div class="col-md-6">
+        
+    </div>
+	
 
-            <div class="row">
+
+    
+
+
+        </div>
+
+        <div class="row">
 
             <table class="table table-condensed" *ngIf="profile.notes">
                 <tbody id="tbNotes">
@@ -94,11 +110,6 @@
             </table>
 
             </div>
-    </div>
-    
-
-
-        </div>
 </ng-container>
 
 <profile-payment></profile-payment>
