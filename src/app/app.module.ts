@@ -18,6 +18,7 @@ import { AppMovementRoutingModule } from "./movements/app-movement.routing.modul
 import { AppAdminRoutingModule } from "./admin/app-admin.routing.module";
 
 import { ComboBoxModule } from '@syncfusion/ej2-angular-dropdowns';
+import { DialogModule } from '@syncfusion/ej2-angular-popups';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { ComboBoxModule } from '@syncfusion/ej2-angular-dropdowns';
     AppProfileRoutingModule,
     AppMovementRoutingModule,
     AppAdminRoutingModule,
-    ComboBoxModule
+    ComboBoxModule,
+    DialogModule
   ],
   declarations: [
     AppComponent,

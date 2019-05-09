@@ -53,12 +53,6 @@
         </div>         
         
     </div>
-  
-  
-  
-  
-  
-  
   </div>
 
   <div class="col-md-6">
@@ -78,6 +72,9 @@
                 <div class="form-group">
                   <button type="button" id="registerNote" class="btn btn-info" onclick="profileView.registerNote();" title="Agregar Comentario"><i class="far fa-sticky-note"></i> Registrar</button>
                 </div>
+                <div class="form-group">
+                  <button type="button" id="registerNote" class="btn btn-secondary" title="Ver comentarios" (click)="viewNotesHistory()"><i class="far fa-sticky-note"></i> Ver</button>
+                </div>
               </div>
         </div>
     </div>
@@ -96,20 +93,23 @@
 
         </div>
 
-        <div class="row">
+            <ejs-dialog #notesDialog [visible]="visible" [isModal]="true" width="500px">
+              <ng-template #content>
+                <div class="dialogContent">
+                    <table class="table table-condensed" *ngIf="profile.notes">
+                        <tbody id="tbNotes">
+                                <tr *ngFor="let note of profile.notes">
+                                    <td>[{{note.creationDate}}] {{note.note}}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger btn-sm" (click)="deleteNote(note.id);"><i class="far fa-trash-alt"></i></button>
+                                    </td>
+                                </tr>
+                        </tbody>
+                    </table>
+                </div>
+              </ng-template>
+            </ejs-dialog>
 
-            <table class="table table-condensed" *ngIf="profile.notes">
-                <tbody id="tbNotes">
-                        <tr *ngFor="let note of profile.notes">
-                            <td>[{{note.creationDate}}] {{note.note}}</td>
-                            <td>
-                                <button type="button" class="btn btn-danger btn-sm" (click)="deleteNote(note.id);"><i class="far fa-trash-alt"></i></button>
-                            </td>
-                        </tr>
-                </tbody>
-            </table>
-
-            </div>
 </ng-container>
 
 <profile-payment></profile-payment>
