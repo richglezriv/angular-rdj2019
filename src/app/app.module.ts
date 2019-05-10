@@ -19,6 +19,8 @@ import { AppAdminRoutingModule } from "./admin/app-admin.routing.module";
 
 import { ComboBoxModule } from '@syncfusion/ej2-angular-dropdowns';
 import { DialogModule } from '@syncfusion/ej2-angular-popups';
+import { GridModule, EditService, CommandColumnService } from '@syncfusion/ej2-angular-grids';
+import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
 
 @NgModule({
   imports: [
@@ -33,7 +35,9 @@ import { DialogModule } from '@syncfusion/ej2-angular-popups';
     AppMovementRoutingModule,
     AppAdminRoutingModule,
     ComboBoxModule,
-    DialogModule
+    DialogModule,
+    GridModule,
+    DatePickerModule
   ],
   declarations: [
     AppComponent,
@@ -44,7 +48,7 @@ import { DialogModule } from '@syncfusion/ej2-angular-popups';
     MOVEMENT_COMPONENTS,
     ADMIN_COMPONENTS
   ],
-  providers: [{ provide: APP_BASE_HREF, useValue: "/" }],
+  providers: [{ provide: APP_BASE_HREF, useValue: "/" }, EditService, CommandColumnService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

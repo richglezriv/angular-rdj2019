@@ -1,24 +1,13 @@
 <div class="row">
   <div class="col-md-12">
-    <table class="table">
-                    <thead>
-                        <tr>
-                            <th>&nbsp;</th>
-                            <th>Tipo</th>
-                            <th>Monto</th>
-                            <th>Año</th>
-                            <th>Periodo(s)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><a href="#" class="btn btn-info btn-sm"><i class="fas fa-info-circle"></i> RDJ-201612034</a></td>
-                            <td><span>Actualizacion/Regularizacion</span></td>
-                            <td>$ 3,360.00</td>
-                            <td>2017</td>
-                            <td>ene. a dic. del 2017<br/></td>
-                        </tr>
-                    </tbody>
-                </table>
+    <ejs-grid [dataSource]="paymentDataSource">
+                <e-columns>
+                    <e-column field='paymentType' headerText='Tipo' textAlign='Center' width=90 type="string"></e-column>
+                    <e-column field='amount' headerText='Monto' width=120 format='C2' type="number" textAlign='Center'></e-column>
+                    <e-column field='year' headerText='Ano' textAlign='Center' width=90 type="number"></e-column>
+                    <e-column field='periods' headerText='Periodo(s)' textAlign='Center'  type="string" width=120></e-column>
+                  <e-column headerText='Detalle' width=140 [commands]="commands"></e-column>
+                </e-columns>
+                </ejs-grid>
   </div>
 </div>
