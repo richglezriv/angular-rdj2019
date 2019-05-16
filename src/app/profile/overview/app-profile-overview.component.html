@@ -24,7 +24,7 @@
 					</div>
 				</div>
 				<div class="e-card-content">
-					<ul class="list-group list-group-flush">
+					<ul *ngIf="profile.lastPayment" class="list-group list-group-flush">
 						<li class="list-group-item">
 							Ultimo Pago <span class="badge">{{profile.lastPayment.paymentDate}}</span>
             </li>
@@ -80,18 +80,6 @@
     </div>
     </div>
 </div>
-
-	<div class="row mt-2">
-		<div class="col-md-6">
-        
-    </div>
-	
-
-
-    
-
-
-        </div>
 
             <ejs-dialog #notesDialog [visible]="visible" [isModal]="true" width="500px">
               <ng-template #content>

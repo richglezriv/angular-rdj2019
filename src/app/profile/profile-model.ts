@@ -3,4 +3,5 @@ export interface ProfileModel {
   profileNumber: string;
   name: string;
   lastName: string;
+  payments: any[];
 }

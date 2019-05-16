@@ -23,7 +23,7 @@ export class ProfileService {
   );
 
   async selectProfile(id: number): Promise<void> {
-    let p = await this.dataService.getEntity<ProfileModel>(id).toPromise();
-    this.selectedProfile.next(p);
+    const profile = await this.dataService.getEntity<ProfileModel>(id).toPromise();
+    this.selectedProfile.next(profile);
   }
 }
