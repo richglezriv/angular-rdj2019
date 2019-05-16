@@ -23,7 +23,7 @@ export class AppProfileHistoryComponent implements OnInit {
       .pipe(takeUntil(this.destroyComponent$()))
       .subscribe(profile => this.paymentDataSource = profile['payments']);
     this.editSettings = { allowEditing: true, allowDeleting: true };
-    this.commands = [{ buttonOption: { content: 'Details', cssClass: 'e-flat', click: this.onClick.bind(this) } }];
+    this.commands = [{ buttonOption: { content: 'ver', click: this.onClick.bind(this) } }];
   }
   onClick() {
     console.log('detail');

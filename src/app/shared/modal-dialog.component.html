@@ -1,0 +1,11 @@
+<ejs-dialog [visible]="visible" [isModal]="true" width="650px" [showCloseIcon]="true">
+  <ng-template #header>
+      <ng-content select="[dialog-header]"></ng-content>
+  </ng-template>
+  <ng-template #content>
+    <div class="dialogContent">
+        <ng-content select="[dialog-content]">
+        </ng-content>
+    </div>
+  </ng-template>
+</ejs-dialog>

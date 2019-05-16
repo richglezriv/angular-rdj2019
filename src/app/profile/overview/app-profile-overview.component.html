@@ -81,22 +81,23 @@
     </div>
 </div>
 
-            <ejs-dialog #notesDialog [visible]="visible" [isModal]="true" width="500px">
-              <ng-template #content>
-                <div class="dialogContent">
-                    <table class="table table-condensed" *ngIf="profile.notes">
-                        <tbody id="tbNotes">
-                                <tr *ngFor="let note of profile.notes">
-                                    <td>[{{note.creationDate}}] {{note.note}}</td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger btn-sm" (click)="deleteNote(note.id);"><i class="far fa-trash-alt"></i></button>
-                                    </td>
-                                </tr>
-                        </tbody>
-                    </table>
-                </div>
-              </ng-template>
-            </ejs-dialog>
+<modal-dialog #dialog>
+  <ng-container dialog-header>
+    <h6>Observaciones</h6>
+  </ng-container>
+  <ng-container dialog-content>
+    <table class="table table-condensed" *ngIf="profile.notes">
+        <tbody id="tbNotes">
+                <tr *ngFor="let note of profile.notes">
+                    <td>[{{note.creationDate}}] {{note.note}}</td>
+                    <td>
+                        <button type="button" class="btn btn-danger btn-sm" (click)="deleteNote(note.id);"><i class="far fa-trash-alt"></i></button>
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+  </ng-container>
+</modal-dialog>
 
 </ng-container>
 

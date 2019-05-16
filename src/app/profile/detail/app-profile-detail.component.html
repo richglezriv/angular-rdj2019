@@ -35,55 +35,37 @@
       </div>
     </div>
   </div>
-</form>
+
 
         
         
 <div class="row">
   <div class="col-md-6">
      <div class="form-group">
-            <label for="StreetId">Calle</label>
-            <select class="form-control" data-val="true" data-val-number="The field StreetId must be a number." data-val-required="The StreetId field is required." id="StreetId" name="StreetId"><option selected="selected" value="1">1era Privada de Cascada de Agua Azul</option>
-<option value="2">2da Privada de Cascada de Agua Azul</option>
-<option value="3">Cascada de Agua Azul</option>
-<option value="4">Cascada de Baseaseachic
-</option>
-<option value="5">Paseo del Cantil
-</option>
-<option value="6">Cascada de Chuveje</option>
-<option value="7">Salto de Eyipantla</option>
-<option value="8">Cascada de las Flores</option>
-<option value="9">Cascada las Glorias</option>
-<option value="10">Salto de Juanacatlan</option>
-<option value="11">Cascada de Misol-Ha</option>
-<option value="12">Cascada de Naolinco</option>
-<option value="13">Prolongacion Naolinco</option>
-<option value="14">Cascada de las Palmas</option>
-<option value="15">Boulevard el Salto</option>
-<option value="16">El Saltito</option>
-<option value="17">Cascada de Tamul</option>
-<option value="18">Salto de Tzararacua</option>
-<option value="19">Libramiento Sur Poniente</option>
-<option value="1000">Todos</option>
-</select>
+            <label for="streetName">Calle</label>
+            <ejs-combobox  
+              formControlName="streetName"
+              placeHolder="Select a street"
+              [dataSource]="streetsDataSource$ | async" 
+              [fields]="dropDownFields">
+            </ejs-combobox>
         </div>
   </div>
   <div class="col-md-6">
         <div class="form-group">
-            <label for="LocationTypeId">Tipo</label>
-            <select class="form-control" data-val="true" data-val-number="The field LocationTypeId must be a number." data-val-required="The LocationTypeId field is required." id="LocationTypeId" name="LocationTypeId"><option value="1">Terreno</option>
-<option selected="selected" value="2">Casa Habitacion</option>
-<option value="3">Macro Lote</option>
-<option value="4">Macro Lote (Ventus)</option>
-<option value="5">Condominio Vertical</option>
-<option value="6">Casa en condominio</option>
-<option value="7">Condominio residencial</option>
-<option value="8">Edificio</option>
-</select>
+            <label for="placeTypeName">Tipo</label>
+            <ejs-combobox  
+              formControlName="placeTypeName"
+              placeHolder="Select a location"
+              [dataSource]="locationsDataSource$ | async" 
+              [fields]="dropDownFields">
+            </ejs-combobox>
         </div>
   </div>
 
 </div>
+</form>
+
 
 <div class="row">
             <div class="col-md-3">

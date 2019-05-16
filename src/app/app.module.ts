@@ -16,6 +16,7 @@ import { ADMIN_COMPONENTS } from "./admin";
 import { AppProfileRoutingModule } from "./profile/app-profile.routing.module";
 import { AppMovementRoutingModule } from "./movements/app-movement.routing.module";
 import { AppAdminRoutingModule } from "./admin/app-admin.routing.module";
+import {SHARED_COMPONENTS} from './shared';
 
 import { ComboBoxModule } from '@syncfusion/ej2-angular-dropdowns';
 import { DialogModule } from '@syncfusion/ej2-angular-popups';
@@ -46,7 +47,8 @@ import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
     AppLoginComponent,
     PROFILE_COMPONENTS,
     MOVEMENT_COMPONENTS,
-    ADMIN_COMPONENTS
+    ADMIN_COMPONENTS,
+    SHARED_COMPONENTS
   ],
   providers: [{ provide: APP_BASE_HREF, useValue: "/" }, EditService, CommandColumnService],
   bootstrap: [AppComponent]

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { DialogComponent } from '@syncfusion/ej2-angular-popups';
 import { ProfileModel } from "../profile-model";
 import { ProfileService } from "../profile.service";
+import {ModalDialogComponent} from '../../shared/modal-dialog.component';
 
 @Component({
   selector: 'app-profile-overview',
@@ -9,20 +10,15 @@ import { ProfileService } from "../profile.service";
 })
 export class AppProfileOverviewComponent {
 
-  @ViewChild('notesDialog') private notesDialog: DialogComponent;
+  @ViewChild(ModalDialogComponent) private notesDialog: ModalDialogComponent;
   constructor(public profileService: ProfileService) {
   }
   
-  visible = false;
-
   deleteNote(noteId: number) {
     console.log(`delete note ${noteId}`);
   }
 
   viewNotesHistory() {
-    this.visible = true;
-    if(this.notesDialog){
-      this.notesDialog.show();
-    }
+    this.notesDialog.show();
   }
 }
