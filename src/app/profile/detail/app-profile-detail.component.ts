@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, AbstractControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { filter, map, takeUntil } from 'rxjs/operators';
 import { ProfileService } from "../profile.service";
 import { DataServiceFactory, DataService } from "../../core";
 import { Street } from '../../core/model/streets';
+import { TakeUntilDestroy } from '../../core';
 import { Location } from '../../core/model/location';
 
 enum ClientType {
@@ -16,8 +17,10 @@ enum ClientType {
   selector: 'app-profile-detail',
   templateUrl: 'app-profile-detail.component.html'
 })
+@TakeUntilDestroy()
 export class AppProfileDetailComponent implements OnInit {
 
+  private destroyComponent$;
   private profile: any;
   private streetsDataService: DataService;
   private locationsDataService: DataService;
@@ -58,7 +61,7 @@ export class AppProfileDetailComponent implements OnInit {
     this.profileForm = new FormGroup(formControls);
 
     this.profileService.selectedProfile$
-      .pipe(filter(p => p != null))
+      .pipe(filter(p => p != null), takeUntil(this.destroyComponent$()))
       .subscribe(profile => {
         metadata.map(m => m.propertyName)
           .forEach(m => this.profileForm.controls[m].setValue(profile[m] ? profile[m].toString() : null));
@@ -68,10 +71,14 @@ export class AppProfileDetailComponent implements OnInit {
 
   private initFormControls() {
     this.streetsDataSource$ = this.streetsDataService.getEntities<Street>()
-      .pipe(map(streets =>
-        streets.map(s => ({ 'name': s.name, 'id': s.id }))));
+      .pipe(
+        map(streets =>
+            streets.map(s => ({ 'name': s.name, 'id': s.id }))),
+        takeUntil(this.destroyComponent$()));
     this.locationsDataSource$ = this.locationsDataService.getEntities<Location>()
-    .pipe(map(streets =>
-        streets.map(s => ({ 'name': s.name, 'id': s.id }))));
+      .pipe(
+        map(streets =>
+          streets.map(s => ({ 'name': s.name, 'id': s.id }))),
+        takeUntil(this.destroyComponent$()));
   }
 }

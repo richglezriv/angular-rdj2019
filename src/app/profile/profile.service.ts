@@ -23,6 +23,9 @@ export class ProfileService {
   );
 
   async selectProfile(id: number): Promise<void> {
+    if(this.selectedProfile.getValue() && this.selectedProfile.getValue().id === id){
+      return;
+    }
     const profile = await this.dataService.getEntity<ProfileModel>(id).toPromise();
     this.selectedProfile.next(profile);
   }

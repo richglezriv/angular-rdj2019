@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
-import { Observable, Subject, ReplaySubject, from, of, range, EMPTY, defer } from 'rxjs';
-import { map, filter, switchMap } from 'rxjs/operators';
+import { Observable, Subject, from, of, range, EMPTY, defer } from 'rxjs';
+import { map, filter, shareReplay } from 'rxjs/operators';
 
 @Injectable()
 export class DataService {
@@ -27,8 +27,8 @@ export class DataService {
         httpParams = new HttpParams().append(param, params[param]);
       }
     }
-    const url = `${this.apiUrl}/${this.endPoint}`;
-    return this.http.get<T[]>(url, { params: httpParams });
+    return this.http.get<T[]>(this.getUrl(), { params: httpParams })
+      .pipe(shareReplay());
   }
 
   getEntity<T>(id?: number, params?: {}): Observable<T> {

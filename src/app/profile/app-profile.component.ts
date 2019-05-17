@@ -7,6 +7,7 @@ import { DataServiceFactory, DataService } from "../core";
 import { ProfileModel } from "./profile-model";
 import { ProfileService } from "./profile.service";
 import { Street } from '../core/model/streets';
+import { TakeUntilDestroy } from '../core/decorators/unsubscribe-decorator';
 
 @Component({
   selector: "app-profile",
@@ -17,7 +18,10 @@ import { Street } from '../core/model/streets';
     ProfileService
   ]
 })
+@TakeUntilDestroy()
 export class AppProfileComponent implements OnInit {
+
+  private destroyComponent$;
 
   constructor(private factory: DataServiceFactory,
     private profileService: ProfileService,
@@ -26,38 +30,18 @@ export class AppProfileComponent implements OnInit {
   }
 
   dropDownFields: Object = { text: 'name', value: 'id' };
-  selectedProfile$: Observable<ProfileModel>;
   profiles$: Observable<ProfileModel[]>;
   streets$: Observable<Street[]>;
+  selectedId = 0;
 
   async ngOnInit() {
     this.streets$ = this.factory.create('Streets')
-      .getEntities<Street>();
-    //emit ({name: 'Joe', age: 31}, {name: 'Bob', age:25})
-    const source = from([{ name: 'Joe', age: 31 },
-    { name: 'Bob', age: 25 },
-    { name: 'Rich', age: 39 }]);
-    //filter out people with age under 30
-    source.pipe(filter(person => person.age >= 30)).subscribe(s => console.log(s));
-    let dataSource: any;
-    // await this.factory.create('Streets')
-    //   .getSomething<Street>()
-    //   .pipe(
-    //     filter(s => {console.log(s); return s.id === 17;})
-    //   )
-    //   .subscribe(s =>console.log('es'+s));
-    // .subscribe(s =>
-    //   dataSource = s.filter(s => s.name === "El Saltito")
-    //     .map(s => ({ text: s.name, value: s.name }))
-    // );
+      .getEntities<Street>()
+      .pipe(takeUntil(this.destroyComponent$()));
 
-    this.selectedProfile$ = this.profileService.selectedProfile$;
-    //  this.test({p1:'222', p2: '333'});
-  }
-
-  private test(params: {}) {
-    let validationErrors: { [propertyName: string]: Object } = {};
-    for (let p in params) { console.log(params[p]) };
+    this.profileService.selectedProfile$
+      .pipe(filter(p => !!p), takeUntil(this.destroyComponent$()))
+      .subscribe(p => this.selectedId = p.id);
   }
 
   navigate(profile: ProfileModel) {
@@ -66,7 +50,11 @@ export class AppProfileComponent implements OnInit {
         this.router.navigate(['./overview'], { relativeTo: this.route }));
   }
 
-  streetSelected(args){
-    this.profiles$ = this.factory.create('ProfilesSearch').getEntities<ProfileModel>({ streetId: args.itemData.id });
+  streetSelected(args) {
+    this.profiles$ = this.factory.create('ProfilesSearch')
+      .getEntities<ProfileModel>({
+        streetId: args.itemData.id
+      })
+      .pipe(takeUntil(this.destroyComponent$()));
   }
 }
