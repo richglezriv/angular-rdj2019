@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Router, ActivatedRoute } from "@angular/router";
 import { filter} from 'rxjs/operators';
-import { RdjAuthService } from '../core';
+import { AuthenticationService } from '../core';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +11,7 @@ import { RdjAuthService } from '../core';
 })
 export class AppLoginComponent implements OnInit {
 
-  constructor(private authService: RdjAuthService,
+  constructor(private authService: AuthenticationService,
     private router: Router,
     private route: ActivatedRoute) { }
 

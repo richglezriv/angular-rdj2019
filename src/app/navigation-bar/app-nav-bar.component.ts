@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { RdjAuthService } from '../core';
+import { AuthenticationService } from '../core';
 
 @Component({
   selector: "app-nav-bar",
@@ -13,7 +13,7 @@ export class AppNavBarComponent implements OnInit {
 
   breadCrumb: Observable<any>;
 
-  constructor(private authService: RdjAuthService,
+  constructor(private authService: AuthenticationService,
     private route: ActivatedRoute,
     private router: Router) { }
 

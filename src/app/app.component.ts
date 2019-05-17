@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { filter } from 'rxjs/operators';
-import { RdjAuthService } from './core';
+import { AuthenticationService } from './core';
 
 @Component({
   selector: "my-app",
@@ -10,7 +10,7 @@ import { RdjAuthService } from './core';
 })
 export class AppComponent {
 
-  constructor(public authService: RdjAuthService,
+  constructor(public authService: AuthenticationService,
     private router: Router,
     private route: ActivatedRoute) {
 

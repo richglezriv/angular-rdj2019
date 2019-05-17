@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
-import { RdjAuthService } from './authentication/rdj-authentication.service';
+import { AuthenticationService } from './authentication/authentication.service';
 
 @Injectable()
 export class BootstrapperService {
   
-  constructor(private authService: RdjAuthService) { }
+  constructor(private authService: AuthenticationService) { }
 
   bootstrap() {
     this.authService.bootstrap();

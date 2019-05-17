@@ -17,7 +17,7 @@ import { AppProfileRoutingModule } from "./profile/app-profile.routing.module";
 import { AppMovementRoutingModule } from "./movements/app-movement.routing.module";
 import { AppAdminRoutingModule } from "./admin/app-admin.routing.module";
 import { SHARED_COMPONENTS } from './shared';
-import { tokenGetter, DataService, BootstrapperService, RdjAuthService, GuardRoute } from './core';
+import { tokenGetter, DataService, BootstrapperService, AuthenticationService, AuthGuardRoute } from './core';
 
 import { ComboBoxModule } from '@syncfusion/ej2-angular-dropdowns';
 import { DialogModule } from '@syncfusion/ej2-angular-popups';
@@ -68,7 +68,8 @@ import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
     deps: [BootstrapperService],
     multi: true
   },
-    RdjAuthService,
+    AuthGuardRoute,
+    AuthenticationService,
     EditService,
     CommandColumnService
   ],
