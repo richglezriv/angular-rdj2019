@@ -13,7 +13,7 @@
           <div class="col-md-6">
             <div class="form-group">
           <label for="QuoteDate">Fecha de Movimiento</label>
-          <input class="form-control" name="QuoteDate" id="QuoteDate" type="date" value="07/01/2019" />
+          <ejs-datepicker></ejs-datepicker>
         </div>
           </div>
           <div class="col-md-6">
@@ -27,6 +27,12 @@
   <div class="col-md-6">
         <div class="form-group">
                     <label for="PaymentMethod">Medio de Pago</label>
+                    <ejs-combobox  
+                      formControlName="streetName"
+                      placeHolder="Select a street"
+                      [dataSource]="streetsDataSource$ | async" 
+                      [fields]="dropDownFields">
+                    </ejs-combobox>
                     <select name="PaymentMethod" class="form-control" id="PaymentMethod"><option value="1">Efectivo</option><option value="2">Debito</option><option value="3">T. Credito</option><option value="4">Transferencia</option><option value="5">Cheque</option></select>
                 </div>
 
@@ -34,6 +40,12 @@
   <div class="col-md-6">
     <div class="form-group">
                     <label for="PaymentType">Tipo de Pago</label>
+                    <ejs-combobox  
+                      formControlName="streetName"
+                      placeHolder="Select a street"
+                      [dataSource]="streetsDataSource$ | async" 
+                      [fields]="dropDownFields">
+                    </ejs-combobox>
                     <select name="PaymentType" class="form-control" id="PaymentType"><option value="0">-- Seleccione --</option><option value="1">Cuota</option><option value="2">Anualidad</option><option value="3">Regularizacion/Actualizacion</option><option value="4">Otro</option></select>
                 </div>
   </div>
@@ -43,6 +55,11 @@
     <div class="col-md-6">
 <div class="form-group">
                     <label for="PaymentPeriod">Año</label>
+                    <ejs-combobox  
+                      placeHolder="Pick a year"
+                      [dataSource]="years" 
+                      [fields]="{ text: 'year', value: 'year' }">
+                    </ejs-combobox>
                     <select name="PaymentPeriod" class="form-control" id="PaymentPeriod" data-val-required="The PaymentPeriod field is required." data-val-number="The field PaymentPeriod must be a number." data-val="true"><option value="">-- Seleccione --</option>
 <option value="2004">2004</option>
 <option value="2005">2005</option>
