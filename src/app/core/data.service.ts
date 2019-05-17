@@ -1,12 +1,13 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
-import { Observable, Subject, from, of, range, EMPTY, defer } from 'rxjs';
-import { map, filter, shareReplay } from 'rxjs/operators';
+import { Observable, Subject, from, of, range, EMPTY, defer, throwError } from 'rxjs';
+import { map, filter, shareReplay, catchError } from 'rxjs/operators';
 
 @Injectable()
 export class DataService {
 
   private apiUrl: string = "https://devrdjapi.azurewebsites.net/api";
+  private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' })
   constructor(private http: HttpClient,
     private endPoint: string) { }
 
@@ -59,5 +60,15 @@ export class DataService {
       .pipe(map<number, { id: number }>(x => ({ id: x })))
       .subscribe(x => console.log(x));
 
+  }
+
+  saveValue<T>(params?: {}): Observable<T> {
+    return this.http.post<T>(this.getUrl(),
+      JSON.stringify(params),
+      { headers: this.httpHeaders })
+      .pipe(catchError(err => {
+        console.log(err);
+        return of(err);
+      }));
   }
 }

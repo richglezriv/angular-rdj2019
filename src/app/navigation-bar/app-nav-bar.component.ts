@@ -1,18 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { RdjAuthService } from '../core';
 
 @Component({
   selector: "app-nav-bar",
-  templateUrl: "./app-nav-bar.component.html"
+  templateUrl: "./app-nav-bar.component.html",
+  styleUrls: ['./app-nav-bar.component.scss']
 })
 export class AppNavBarComponent implements OnInit {
 
   breadCrumb: Observable<any>;
 
-  constructor(private route: ActivatedRoute,
+  constructor(private authService: RdjAuthService,
+    private route: ActivatedRoute,
     private router: Router) { }
+
+  @Input() visible = false;
 
   ngOnInit(): void {
     // console.log(this.route);
@@ -33,5 +38,10 @@ export class AppNavBarComponent implements OnInit {
         .subscribe(d => console.log(d));
 
     }
+  }
+
+  logout() { 
+    this.authService.logout();
+
   }
 }
