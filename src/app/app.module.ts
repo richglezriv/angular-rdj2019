@@ -43,7 +43,7 @@ import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
     DatePickerModule,
     RouterModule.forRoot([
       { path: "login", component: AppLoginComponent, data: { name: "login" } },
-      { path: "welcome", component: AppWelcomeComponent, data: { name: "welcome" } },
+      { path: "welcome", canActivate: [AuthGuardRoute], component: AppWelcomeComponent, data: { name: "welcome" } },
       { path: "**", redirectTo: 'welcome' }
     ]),
     AppProfileRoutingModule,

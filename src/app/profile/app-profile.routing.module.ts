@@ -11,7 +11,7 @@ import { AuthGuardRoute } from '../core';
   imports: [
     RouterModule.forChild([
       {
-        path: 'profile', component: AppProfileComponent, data: { name: 'profile' }, children: [
+        path: 'profile', canActivate: [AuthGuardRoute], component: AppProfileComponent, data: { name: 'profile' }, children: [
           { path: 'overview', component: AppProfileOverviewComponent },
           { path: 'detail', component: AppProfileDetailComponent },
           { path: 'history', component: AppProfileHistoryComponent }
