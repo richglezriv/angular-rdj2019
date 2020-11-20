@@ -1,15 +1,22 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
-import { Observable, Subject, from, of, range, EMPTY, defer, throwError } from 'rxjs';
-import { map, filter, shareReplay, catchError } from 'rxjs/operators';
+import {
+  Observable,
+  Subject,
+  from,
+  of,
+  range,
+  EMPTY,
+  defer,
+  throwError
+} from "rxjs";
+import { map, filter, shareReplay, catchError } from "rxjs/operators";
 
 @Injectable()
 export class DataService {
-
-  private apiUrl: string = "https://devrdjapi.azurewebsites.net/api";
-  private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' })
-  constructor(private http: HttpClient,
-    private endPoint: string) { }
+  private apiUrl: string = "";
+  private httpHeaders = new HttpHeaders({ "Content-Type": "application/json" });
+  constructor(private http: HttpClient, private endPoint: string) {}
 
   getValues(): Observable<any[]> {
     const url = `${this.apiUrl}/${this.endPoint}`;
@@ -28,7 +35,8 @@ export class DataService {
         httpParams = new HttpParams().append(param, params[param]);
       }
     }
-    return this.http.get<T[]>(this.getUrl(), { params: httpParams })
+    return this.http
+      .get<T[]>(this.getUrl(), { params: httpParams })
       .pipe(shareReplay());
   }
 
@@ -51,7 +59,7 @@ export class DataService {
   }
 
   doSomething() {
-    console.log('doing something')
+    console.log("doing something");
 
     const url = `${this.apiUrl}/${this.endPoint}`;
     //let response = this.http.get(url).pipe(map(s => ({id: s}))).subscribe(s => console.log(s));
@@ -59,16 +67,18 @@ export class DataService {
     range(1, 5)
       .pipe(map<number, { id: number }>(x => ({ id: x })))
       .subscribe(x => console.log(x));
-
   }
 
   saveValue<T>(params?: {}): Observable<T> {
-    return this.http.post<T>(this.getUrl(),
-      JSON.stringify(params),
-      { headers: this.httpHeaders })
-      .pipe(catchError(err => {
-        console.log(err);
-        return of(err);
-      }));
+    return this.http
+      .post<T>(this.getUrl(), JSON.stringify(params), {
+        headers: this.httpHeaders
+      })
+      .pipe(
+        catchError(err => {
+          console.log(err);
+          return of(err);
+        })
+      );
   }
 }
